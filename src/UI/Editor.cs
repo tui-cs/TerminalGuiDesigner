@@ -406,7 +406,7 @@ public class Editor : Runnable, IErrorReporter
         artText = artText.Replace("\r\n", "\n");
 
         // The version information line
-        string versionLine = $"(Alpha - {informationalVersion} )";
+        string versionLine = $"( {informationalVersion} )";
         string logLine = "Logs - " + _logDirectory;
 
         // Split the ASCII art into lines
