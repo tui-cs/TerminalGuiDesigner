@@ -59,7 +59,7 @@ namespace Showcase {
             this.TextAlignment = Terminal.Gui.ViewBase.Alignment.Start;
             this.button.Width = Dim.Auto();
             this.button.Height = Dim.Auto();
-            this.button.X = 47;
+            this.button.X = 53;
             this.button.Y = 0;
             this.button.Visible = true;
             this.button.CanFocus = true;
