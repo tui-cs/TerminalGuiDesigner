@@ -65,8 +65,12 @@ namespace TerminalGuiDesigner.UI.Windows {
             tableView.Activating += (s, e) =>
             {                
                 var prop = _props[tableView.Value.SelectedCell.Y];
-                var k = Modals.GetShortcut(app);
-                prop.SetValue(this.keyMap,k.ToString());
+                var k = Modals.GetShortcut(app, out bool cancel);
+                if(!cancel)
+                {
+                    prop.SetValue(this.keyMap, k.ToString());
+                }
+
                 this.SetNeedsDraw();
                 e.Handled = true;
             };

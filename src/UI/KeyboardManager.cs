@@ -118,8 +118,13 @@ public class KeyboardManager
             var shortcutProp = typeof(MenuItem).GetProperty(nameof(MenuItem.Key))
                 ?? throw new Exception("MenuItem.Key property not found");
             var op = new SetChildPropertyOperation(this.app, menuItem, shortcutProp);
-            op.NewValue = Modals.GetShortcut(app);
-            OperationManager.Instance.Do(op);
+            op.NewValue = Modals.GetShortcut(app, out bool cancel);
+
+            if (!cancel)
+            {
+                OperationManager.Instance.Do(op);
+            }
+
             return false;
         }
 

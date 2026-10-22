@@ -188,7 +188,7 @@ public class Modals
         return false;
     }
 
-    internal static Key GetShortcut(IApplication app)
+    internal static Key GetShortcut(IApplication app, out bool cancel)
     {
         Key key = KeyCode.Null;
         var dlg = new LoadingDialog("Press Shortcut or Del");
@@ -203,6 +203,14 @@ public class Modals
         };
         app.Run(dlg);
 
+        // Things that the user probably didn't want to bind to a key (e.g. close shortcut modal prompt with Esc)
+        if(key == Key.Esc)
+        {
+            cancel = true;
+            return KeyCode.Null;
+        }
+
+        cancel = false;
         return key == Key.DeleteChar ? KeyCode.Null : key;
     }
 
