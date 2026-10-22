@@ -9,6 +9,7 @@
 
 namespace TerminalGuiDesigner; 
 using Terminal.Gui;
+using Terminal.Gui.Input;
 
 /// <summary>
 /// Popup modal dialog with no buttons.  Designed to be closed by the code after
@@ -38,5 +39,18 @@ public partial class LoadingDialog {
     public LoadingDialog(FileInfo file):this() {
 
         lblLoading.Text = $"Loading {file.Name}";
+    }
+
+    /// <summary>
+    /// When creating a new view a power user might repeatedly hit Enter. If keystrike Enter
+    /// lands during the Loading... dialog showing this closes the Loading dialog and exits the
+    /// whole app (as top level modal just closed).
+    /// </summary>
+    /// <param name="args"></param>
+    /// <returns></returns>
+    protected override bool OnAccepting(CommandEventArgs args)
+    {
+        args.Handled = true;
+        return true;
     }
 }
