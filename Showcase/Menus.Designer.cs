@@ -26,6 +26,8 @@ namespace Showcase {
         
         private Terminal.Gui.Views.Label label;
         
+        private Terminal.Gui.Views.Label lblActionedMenu;
+        
         private Terminal.Gui.Views.MenuBar menuBar;
         
         private Terminal.Gui.Views.MenuBarItem fileMenu;
@@ -254,6 +256,7 @@ namespace Showcase {
         
         private void InitializeComponent() {
             this.menuBar = new Terminal.Gui.Views.MenuBar();
+            this.lblActionedMenu = new Terminal.Gui.Views.Label();
             this.label = new Terminal.Gui.Views.Label();
             this.Width = Dim.Percent(90);
             this.Height = Dim.Percent(80);
@@ -287,6 +290,17 @@ Type underscore before letter for alt key
 (Editor keybindings can be changed from launch screen)";
             this.label.TextAlignment = Terminal.Gui.ViewBase.Alignment.Center;
             this.Add(this.label);
+            this.lblActionedMenu.Width = Dim.Auto();
+            this.lblActionedMenu.Height = Dim.Auto();
+            this.lblActionedMenu.X = Pos.Center();
+            this.lblActionedMenu.Y = Pos.AnchorEnd(1);
+            this.lblActionedMenu.Visible = true;
+            this.lblActionedMenu.CanFocus = false;
+            this.lblActionedMenu.ShadowStyle = null;
+            this.lblActionedMenu.Data = "lblActionedMenu";
+            this.lblActionedMenu.Text = "Actioned Menu:";
+            this.lblActionedMenu.TextAlignment = Terminal.Gui.ViewBase.Alignment.Start;
+            this.Add(this.lblActionedMenu);
             this.menuBar.Width = Dim.Fill(0);
             this.menuBar.Height = Dim.Auto();
             this.menuBar.X = 0;
@@ -501,10 +515,13 @@ Type underscore before letter for alt key
             this.renderControlCharactersMenuItem.Title = "Render Control Characters";
             this.zoomInMenuItem = new Terminal.Gui.Views.MenuItem();
             this.zoomInMenuItem.Title = "Zoom In";
+            this.zoomInMenuItem.Key = new Key("1342177323");
             this.zoomOutMenuItem = new Terminal.Gui.Views.MenuItem();
             this.zoomOutMenuItem.Title = "Zoom Out";
+            this.zoomOutMenuItem.Key = new Key("1342177375");
             this.resetZoomMenuItem = new Terminal.Gui.Views.MenuItem();
             this.resetZoomMenuItem.Title = "Reset Zoom";
+            this.resetZoomMenuItem.Key = new Key("1073799224");
             this.appearanceMenuItem.SubMenu = new Menu([fullScreenMenuItem,zenModeMenuItem,centeredLayoutMenuItem,new Line { Orientation = Terminal.Gui.ViewBase.Orientation.Horizontal },menuBarMenuItem,primarySlideBarMenuItem,statusBarMenuItem,panelMenuItem,new Line { Orientation = Terminal.Gui.ViewBase.Orientation.Horizontal },movePrimarySideBarRightMenuItem,activityBarPositionMenuItem,panelPositionMenuItem,alignPanelMenuItem,tabBarMenuItem,editorActionsPositionMenuItem,new Line { Orientation = Terminal.Gui.ViewBase.Orientation.Horizontal },minimapMenuItem,breadcrumbsMenuItem,stickyScrollMenuItem,renderWhitespaceMenuItem,renderControlCharactersMenuItem,new Line { Orientation = Terminal.Gui.ViewBase.Orientation.Horizontal },zoomInMenuItem,zoomOutMenuItem,resetZoomMenuItem]);
             this.editorLayoutMenuItem = new Terminal.Gui.Views.MenuItem();
             this.editorLayoutMenuItem.Title = "Editor Layout";

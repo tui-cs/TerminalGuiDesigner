@@ -9,12 +9,59 @@
 // -----------------------------------------------------------------------------
 namespace Showcase {
     using Terminal.Gui;
-    
-    
+    using Terminal.Gui.ViewBase;
+    using Terminal.Gui.Views;
+
     public partial class Menus {
         
         public Menus() {
             InitializeComponent();
+
+            foreach(var s in SubViews)
+            {
+                RegisterHandler(s);
+            }
+
+            exitMenuItem.Action += ()=>
+            {
+                App.RequestStop();
+            };
+        }
+        private void RegisterHandler(View v)
+        {
+            foreach(var sub in v.SubViews)
+            {
+                RegisterHandler(sub);
+            }
+
+            if(v is MenuBar b)
+            {
+                foreach(var m in b.GetMenuItemsOfAllSubMenus())
+                {
+                    RegisterHandler(m);
+                }
+            }
+
+            if (v is MenuBarItem mbi)
+            {
+                
+                foreach (var m in mbi.PopoverMenu?.GetSubViews() ?? [])
+                {
+                    RegisterHandler(m);
+                }
+            }
+
+            if (v.GetType() == typeof(MenuItem))
+            {
+                MenuItem sc = (MenuItem)v;
+                if(v.Title is string title)
+                {
+                    sc.Action = () =>
+                    {
+                        lblActionedMenu.Text = "Actioned Menu: " + title;
+                    };
+                }                
+            }
         }
     }
 }
