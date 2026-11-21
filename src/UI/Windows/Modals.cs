@@ -191,7 +191,7 @@ public class Modals
     internal static Key GetShortcut(IApplication app, out bool cancel)
     {
         Key key = KeyCode.Null;
-        var dlg = new LoadingDialog("Press Shortcut or Del");
+        var dlg = new LoadingDialog("Press Shortcut or Del (to clear)");
         dlg.KeyDown += (s, e) =>
         {
             if (IsValidShortcut(e))

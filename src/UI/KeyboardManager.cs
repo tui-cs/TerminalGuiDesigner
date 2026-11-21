@@ -115,6 +115,10 @@ public class KeyboardManager
 
         if (keystroke.ToString( ) == this.keyMap.SetShortcut)
         {
+            // TODO: store menu state
+            
+            
+
             var shortcutProp = typeof(MenuItem).GetProperty(nameof(MenuItem.Key))
                 ?? throw new Exception("MenuItem.Key property not found");
             var op = new SetChildPropertyOperation(this.app, menuItem, shortcutProp);
@@ -124,6 +128,10 @@ public class KeyboardManager
             {
                 OperationManager.Instance.Do(op);
             }
+
+            // TODO: Restore menu state
+            menuItem.SetFocus();
+
 
             return false;
         }
