@@ -406,7 +406,7 @@ public class Editor : Runnable, IErrorReporter
         artText = artText.Replace("\r\n", "\n");
 
         // The version information line
-        string versionLine = $"(Alpha - {informationalVersion} )";
+        string versionLine = $"( {informationalVersion} )";
         string logLine = "Logs - " + _logDirectory;
 
         // Split the ASCII art into lines
@@ -827,9 +827,9 @@ public class Editor : Runnable, IErrorReporter
 
         var rootCommands = new ObservableCollection<string>
         {
-            $"{this.keyMap.ShowHelp} - Show Help",
             $"{this.keyMap.New} - New Window/Class",
             $"{this.keyMap.Open} - Open a .Designer.cs file",
+            $"{this.keyMap.ShowHelp} - Show Help",
             $"Keybindings",
         };
 
@@ -868,13 +868,13 @@ public class Editor : Runnable, IErrorReporter
                 switch (this.rootCommandsListView.SelectedItem)
                 {
                     case 0:
-                        this.ShowHelp();
-                        break;
-                    case 1:
                         this.New();
                         break;
-                    case 2:
+                    case 1:
                         this.Open();
+                        break;
+                    case 2:
+                        this.ShowHelp();
                         break;
                     case 3:
                         this.ChangeKeybindings();

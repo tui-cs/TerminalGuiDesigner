@@ -10,7 +10,7 @@
 		</None>
 	</ItemGroup>
 	<PropertyGroup>
-		<TargetFrameworks>net10.0</TargetFrameworks>
+		<TargetFrameworks>net11.0</TargetFrameworks>
 		<DefineConstants>$(DefineConstants)</DefineConstants>
 		<LangVersion>13</LangVersion>
 		<OutputType>Exe</OutputType>
@@ -20,7 +20,7 @@
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackageId>TerminalGuiDesigner</PackageId>
-		<Version>2.4.5</Version>
+		<Version>2.5.0</Version>
 		<Authors>Thomas Nind</Authors>
 		<Nullable>enable</Nullable>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -33,6 +33,9 @@
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>
+		    2.6.1
+			* Update to release Terminal.Gui v2.6.1
+			* Update to dotnet 11
 			2.4.5
 			* Update to latest Terminal.Gui v2.4.5
 			2.0.2-develop.40
@@ -161,19 +164,18 @@
 		<PackageReference Include="Basic.Reference.Assemblies.Net80" Version="1.7.7" />
 		<PackageReference Include="CommandLineParser" Version="2.9.1" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" />
-		<!-- TEMP: 10.0.11 satisfies the Terminal.Gui 2.5.0 dependency floor (NU1605). -->
-		<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.11" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.11" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.11" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0" />
 		<PackageReference Include="NetEscapades.Configuration.Yaml" Version="3.1.0" />
 		<PackageReference Include="Serilog" Version="4.2.0" />
 		<PackageReference Include="Serilog.Extensions.Logging" Version="9.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
-		<PackageReference Include="Terminal.Gui" Version="2.5.0-beta.1" />
+		<PackageReference Include="Terminal.Gui" Version="2.6.1-develop.1" />
 		<PackageReference Include="nlog" Version="5.3.3" />
 		<PackageReference Include="Basic.Reference.Assemblies.Net100" Version="1.7.7" />
-		<PackageReference Include="System.CodeDom" Version="10.0.0" />
+		<PackageReference Include="System.CodeDom" Version="11.0.0" />
 	</ItemGroup>
 	
 	<ItemGroup>
